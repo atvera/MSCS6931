@@ -1,0 +1,6 @@
+C:\Users\brady\source\repos\RiverKeeperAPI\RiverKeeperDO\bin\Debug\RiverKeeperDO.dll
+C:\Users\brady\source\repos\RiverKeeperAPI\RiverKeeperDO\bin\Debug\RiverKeeperDO.pdb
+C:\Users\brady\source\repos\RiverKeeperAPI\RiverKeeperDO\obj\Debug\RiverKeeperDO.csprojResolveAssemblyReference.cache
+C:\Users\brady\source\repos\RiverKeeperAPI\RiverKeeperDO\obj\Debug\RiverKeeperDO.csproj.CoreCompileInputs.cache
+C:\Users\brady\source\repos\RiverKeeperAPI\RiverKeeperDO\obj\Debug\RiverKeeperDO.dll
+C:\Users\brady\source\repos\RiverKeeperAPI\RiverKeeperDO\obj\Debug\RiverKeeperDO.pdb
