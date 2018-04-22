@@ -14,5 +14,6 @@ namespace RiverKeeperDO
         public string PhoneNumber { get; set; }
         public int Type { get; set; }
         public string EmailAddress { get; set; }
+        public string ZipCode { get; set; }
     }
 }

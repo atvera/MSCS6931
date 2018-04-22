@@ -26,6 +26,7 @@ namespace RiverKeeperDAL
         public string PhoneNumber { get; set; }
         public int Type { get; set; }
         public string EmailAddress { get; set; }
+        public string ZipCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Survey> Surveys { get; set; }

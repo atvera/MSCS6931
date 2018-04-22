@@ -13,9 +13,9 @@ namespace RiverKeeperTasks
     {
         UserDAO userDAO = new UserDAO();
 
-        public UserDO GetUser()
+        public List<UserDO> GetUsers()
         {
-            return userDAO.GetUser();
+            return userDAO.GetUsers();
         }
 
         public bool CreateUser(UserDO user)

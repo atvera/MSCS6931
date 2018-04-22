@@ -14,8 +14,8 @@ namespace rkTest
     {
         static void Main(string[] args)
         {
-            UserDAO userDAO = new UserDAO();
-            Console.WriteLine(userDAO.GetUser().FirstName);
+            //UserDAO userDAO = new UserDAO();
+            //Console.WriteLine(userDAO.GetUser().FirstName);
         }
     }
 }

@@ -11,35 +11,41 @@ namespace RiverKeeperDAL
 {
     public class UserDAO
     {
-        public UserDO GetUser()
+        //INFO: Return all users in the database.
+        public List<UserDO> GetUsers()
         {
+            List<UserDO> UserDOs = new List<UserDO>();
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
             {
-                UserDO userDO = null;
-                var user =
-                    (from u in RKEntities.Users
-                    select u).FirstOrDefault();
-
-                if(user != null)
+               List<User> Users =(from u in RKEntities.Users
+                     select u).ToList();
+                foreach (var user in Users)
                 {
-                    userDO = new UserDO()
+
+
+                    if (user != null)
                     {
-                        UserId = user.UserId,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        PhoneNumber = user.PhoneNumber,
-                        Type = user.Type,
-                        EmailAddress = user.EmailAddress
-                    };
-                   
-                }
-                if (user == null)
-                {
-                    throw new Exception("No users in DB");
+                        UserDO userDO = new UserDO()
+                        {
+                            UserId = user.UserId,
+                            FirstName = user.FirstName,
+                            LastName = user.LastName,
+                            PhoneNumber = user.PhoneNumber,
+                            Type = user.Type,
+                            EmailAddress = user.EmailAddress,
+                            ZipCode = user.ZipCode
+                        };
+                        UserDOs.Add(userDO);
+
+                    }
+                    if (user == null)
+                    {
+                        throw new Exception("No user in DB");
+                    }
                 }
 
-                return userDO;
             }
+            return UserDOs;
         }
 
         public bool CreateUser(UserDO userDO)
@@ -48,13 +54,14 @@ namespace RiverKeeperDAL
             {
                 User userdb = new User();
 
-                if(userDO != null)
+                if (userDO != null)
                 {
                     userdb.FirstName = userDO.FirstName;
                     userdb.LastName = userDO.LastName;
                     userdb.EmailAddress = userDO.EmailAddress;
                     userdb.PhoneNumber = userDO.PhoneNumber;
                     userdb.Type = userDO.Type;
+                    userdb.ZipCode = userDO.ZipCode;
                     RKEntities.Users.Add(userdb);
                 }
 
@@ -63,7 +70,7 @@ namespace RiverKeeperDAL
 
                 try
                 {
-                   dbResult = RKEntities.SaveChanges();
+                    dbResult = RKEntities.SaveChanges();
                 }
                 catch (DbEntityValidationException dbEx)
                 {
@@ -75,10 +82,10 @@ namespace RiverKeeperDAL
                         }
                     }
                 }
-                
-                
 
-                if(dbResult != 1)
+
+
+                if (dbResult != 1)
                 {
                     return false;
                 }

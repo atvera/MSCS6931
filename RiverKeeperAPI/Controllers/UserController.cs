@@ -18,17 +18,17 @@ namespace RiverKeeperAPI.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            UserDO userDO = null;
+            List<UserDO> users = null;
             try
             {
-                userDO = userTask.GetUser();
+                users = userTask.GetUsers();
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
 
-            return Json(userDO);
+            return Json(users);
         }
 
         // GET: api/User/5

@@ -36,6 +36,7 @@
           <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ZipCode" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_SurveyQuestion">
           <End Role="Surveys" Type="Self.Surveys" Multiplicity="1" />
@@ -113,6 +114,7 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Surveys" Relationship="Self.FK_UserSurvey" FromRole="Users" ToRole="Surveys" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_SurveyQuestion">
           <End Role="Surveys" Type="Self.Survey" Multiplicity="1" />
@@ -183,6 +185,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="riverkeeperModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
