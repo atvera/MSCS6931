@@ -1,0 +1,17 @@
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\rkTest.exe.config
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\rkTest.exe
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\rkTest.pdb
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\RiverKeeperDAL.dll
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\RiverKeeperDO.dll
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\EntityFramework.dll
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\RiverKeeperDAL.pdb
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\RiverKeeperDAL.dll.config
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\RiverKeeperDO.pdb
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\EntityFramework.xml
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\obj\Debug\rkTest.csprojResolveAssemblyReference.cache
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\obj\Debug\rkTest.csproj.CoreCompileInputs.cache
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\obj\Debug\rkTest.csproj.CopyComplete
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\obj\Debug\rkTest.exe
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\obj\Debug\rkTest.pdb
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\brady\source\repos\RiverKeeperAPI\rkTest\bin\Debug\EntityFramework.SqlServer.xml
