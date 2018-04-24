@@ -23,7 +23,6 @@ namespace RiverKeeperDAL
         public int SurveyId { get; set; }
         public string Name { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public string Period { get; set; }
         public bool isTemplate { get; set; }
         public int UserId { get; set; }
     
