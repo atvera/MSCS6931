@@ -11,10 +11,27 @@ namespace RiverKeeperDAL
 {
     public class UserDAO
     {
+        //INFO: Get user by email address
+        public UserDO GetUser(string email)
+        {
+            UserDO userDO = new UserDO();
+            using (riverkeeperEntities RKEntities = new riverkeeperEntities())
+            {
+
+                User user = (from u in RKEntities.Users
+                             where u.EmailAddress.Equals(email)
+                             select u).FirstOrDefault();
+
+                userDO = translateUserDBtoUserDO(user);
+
+            }
+            return userDO;
+        }
         //INFO: Return all users in the database.
         public List<UserDO> GetUsers()
         {
             List<UserDO> UserDOs = new List<UserDO>();
+
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
             {
                List<User> Users =(from u in RKEntities.Users
@@ -93,5 +110,30 @@ namespace RiverKeeperDAL
                 return true;
             }
         }
+
+        private UserDO translateUserDBtoUserDO(User user)
+        {
+            UserDO userDO = new UserDO();
+           if (user != null)
+            {
+                userDO = new UserDO()
+                {
+                    UserId = user.UserId,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    PhoneNumber = user.PhoneNumber,
+                    Type = user.Type,
+                    EmailAddress = user.EmailAddress,
+                    ZipCode = user.ZipCode
+                };
+            }
+            if(user == null)
+            {
+                throw new Exception("User is null");
+            }
+
+            return userDO;
+        }
+        
     }
 }
