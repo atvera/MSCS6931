@@ -10,13 +10,12 @@
 namespace RiverKeeperDAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Question
+    public enum ResponseFormat : short
     {
-        public int QuestionId { get; set; }
-        public ResponseFormat Type { get; set; }
-        public string Wording { get; set; }
-        public string PossibleAnswers { get; set; }
+        Alphanumeric = 1,
+        Date = 2,
+        SingleSelection = 3,
+        MultipleSelection = 4
     }
 }

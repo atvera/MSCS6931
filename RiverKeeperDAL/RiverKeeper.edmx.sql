@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/24/2018 23:21:05
+-- Date Created: 04/25/2018 00:01:39
 -- Generated from EDMX file: C:\Users\anat_\Documents\GitHub\MSCS6931\RiverKeeperDAL\RiverKeeper.edmx
 -- --------------------------------------------------
 
@@ -17,26 +17,32 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_FK_SurveyQuestion_Surveys]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[FK_SurveyQuestion] DROP CONSTRAINT [FK_FK_SurveyQuestion_Surveys];
-GO
-IF OBJECT_ID(N'[dbo].[FK_FK_SurveyQuestion_Questions]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[FK_SurveyQuestion] DROP CONSTRAINT [FK_FK_SurveyQuestion_Questions];
-GO
-IF OBJECT_ID(N'[dbo].[FK_UserSurvey]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_UserSurvey];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AnswerQuestion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_AnswerQuestion];
 GO
 IF OBJECT_ID(N'[dbo].[FK_AnswerSurvey]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_AnswerSurvey];
 GO
+IF OBJECT_ID(N'[dbo].[FK_FK_SurveyQuestion_Questions]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FK_SurveyQuestion] DROP CONSTRAINT [FK_FK_SurveyQuestion_Questions];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FK_SurveyQuestion_Surveys]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FK_SurveyQuestion] DROP CONSTRAINT [FK_FK_SurveyQuestion_Surveys];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserSurvey]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_UserSurvey];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Answers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Answers];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SurveyQuestion]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FK_SurveyQuestion];
+GO
 IF OBJECT_ID(N'[dbo].[Questions]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Questions];
 GO
@@ -45,12 +51,6 @@ IF OBJECT_ID(N'[dbo].[Surveys]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
-GO
-IF OBJECT_ID(N'[dbo].[Answers]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Answers];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SurveyQuestion]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[FK_SurveyQuestion];
 GO
 
 -- --------------------------------------------------
@@ -61,7 +61,8 @@ GO
 CREATE TABLE [dbo].[Questions] (
     [QuestionId] int IDENTITY(1,1) NOT NULL,
     [Type] smallint  NOT NULL,
-    [Wording] nvarchar(max)  NOT NULL
+    [Wording] nvarchar(max)  NOT NULL,
+    [PossibleAnswers] nvarchar(max)  NULL
 );
 GO
 

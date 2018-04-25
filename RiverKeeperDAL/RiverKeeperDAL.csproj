@@ -56,6 +56,9 @@
       <DependentUpon>RiverKeeper.tt</DependentUpon>
     </Compile>
     <Compile Include="QuestionDAO.cs" />
+    <Compile Include="ResponseFormat.cs">
+      <DependentUpon>RiverKeeper.tt</DependentUpon>
+    </Compile>
     <Compile Include="SurveyDAO.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

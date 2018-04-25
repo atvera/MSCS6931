@@ -11,5 +11,6 @@ namespace RiverKeeperDO
         public int QuestionId { get; set; }
         public short Type { get; set; }
         public string Wording { get; set; }
+        public string PossibleAnswers { get; set; }
     }
 }

@@ -39,7 +39,7 @@ namespace RiverKeeperDAL
                     QuestionDO questionDO = new QuestionDO();
                     questionDO.QuestionId = questiondb.QuestionId;
                     questionDO.Wording = questiondb.Wording;
-                    questionDO.Type = questiondb.Type;
+                    questionDO.Type = (short) questiondb.Type;
                     surveyDO.Questions.Add(questionDO);
                 }
 
@@ -80,7 +80,7 @@ namespace RiverKeeperDAL
                     QuestionDO questionDO = new QuestionDO();
                     questionDO.QuestionId = questiondb.QuestionId;
                     questionDO.Wording = questiondb.Wording;
-                    questionDO.Type = questiondb.Type;
+                    questionDO.Type = (short) questiondb.Type;
                     surveyDO.Questions.Add(questionDO);
                 }
             }
@@ -109,7 +109,7 @@ namespace RiverKeeperDAL
                         QuestionDO questionDO = surveyDO.Questions.ElementAt(i);
                         Question questiondb = new Question();
                         questiondb.Wording = questionDO.Wording;
-                        questiondb.Type = questionDO.Type;
+                        questiondb.Type = (ResponseFormat) questionDO.Type;
                         surveydb.Questions.Add(questiondb); //TODO: questions that do not belong to a template should not get added to the Questions table
                     }
 
@@ -177,7 +177,17 @@ namespace RiverKeeperDAL
                         QuestionDO questionDO = surveyDO.Questions.ElementAt(i);
                         Question questiondb = new Question();
                         questiondb.Wording = questionDO.Wording;
-                        questiondb.Type = questionDO.Type;
+                        questiondb.Type = (ResponseFormat) questionDO.Type;
+                        questiondb.PossibleAnswers = questionDO.PossibleAnswers;
+
+                        if((questiondb.Type == ResponseFormat.MultipleSelection 
+                            || questiondb.Type == ResponseFormat.SingleSelection)
+                            && questiondb.PossibleAnswers == null)
+                        {
+                            Debug.WriteLine("Selection options expected for this question type");
+                            throw new Exception("Selection options expected for this question type. Aborting template creation");
+                        }
+
                         surveydb.Questions.Add(questiondb);
                     }
 

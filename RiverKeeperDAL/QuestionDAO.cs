@@ -26,8 +26,9 @@ namespace RiverKeeperDAL
                         QuestionDO questionDO = new QuestionDO()
                         {
                             QuestionId = question.QuestionId,
-                            Type = question.Type,
-                            Wording = question.Wording
+                            Type = (short)question.Type,
+                            Wording = question.Wording,
+                            PossibleAnswers = question.PossibleAnswers
                         };
                         questionDOs.Add(questionDO);
                     }
@@ -50,7 +51,8 @@ namespace RiverKeeperDAL
                 if (questionDO != null)
                 {
                     questiondb.Wording = questionDO.Wording;
-                    questiondb.Type = questionDO.Type;
+                    questiondb.Type = (ResponseFormat) questionDO.Type;
+                    questiondb.PossibleAnswers = questionDO.PossibleAnswers;
                     RKEntities.Questions.Add(questiondb);
                 }
 
