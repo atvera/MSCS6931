@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/23/2018 22:28:31
+-- Date Created: 04/24/2018 18:47:59
 -- Generated from EDMX file: C:\Users\anat_\Documents\GitHub\MSCS6931\RiverKeeperDAL\RiverKeeper.edmx
 -- --------------------------------------------------
 
@@ -46,9 +46,7 @@ GO
 CREATE TABLE [dbo].[Questions] (
     [QuestionId] int IDENTITY(1,1) NOT NULL,
     [Type] smallint  NOT NULL,
-    [Wording] nvarchar(max)  NOT NULL,
-    [Response] nvarchar(max)  NOT NULL,
-    [SurveyId] int  NOT NULL
+    [Wording] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -74,6 +72,13 @@ CREATE TABLE [dbo].[Users] (
 );
 GO
 
+-- Creating table 'FK_SurveyQuestion'
+CREATE TABLE [dbo].[FK_SurveyQuestion] (
+    [FK_SurveyQuestion_Questions_SurveyId] int  NOT NULL,
+    [Questions_QuestionId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -96,23 +101,38 @@ ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([UserId] ASC);
 GO
 
+-- Creating primary key on [FK_SurveyQuestion_Questions_SurveyId], [Questions_QuestionId] in table 'FK_SurveyQuestion'
+ALTER TABLE [dbo].[FK_SurveyQuestion]
+ADD CONSTRAINT [PK_FK_SurveyQuestion]
+    PRIMARY KEY CLUSTERED ([FK_SurveyQuestion_Questions_SurveyId], [Questions_QuestionId] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [SurveyId] in table 'Questions'
-ALTER TABLE [dbo].[Questions]
-ADD CONSTRAINT [FK_SurveyQuestion]
-    FOREIGN KEY ([SurveyId])
+-- Creating foreign key on [FK_SurveyQuestion_Questions_SurveyId] in table 'FK_SurveyQuestion'
+ALTER TABLE [dbo].[FK_SurveyQuestion]
+ADD CONSTRAINT [FK_FK_SurveyQuestion_Surveys]
+    FOREIGN KEY ([FK_SurveyQuestion_Questions_SurveyId])
     REFERENCES [dbo].[Surveys]
         ([SurveyId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SurveyQuestion'
-CREATE INDEX [IX_FK_SurveyQuestion]
-ON [dbo].[Questions]
-    ([SurveyId]);
+-- Creating foreign key on [Questions_QuestionId] in table 'FK_SurveyQuestion'
+ALTER TABLE [dbo].[FK_SurveyQuestion]
+ADD CONSTRAINT [FK_FK_SurveyQuestion_Questions]
+    FOREIGN KEY ([Questions_QuestionId])
+    REFERENCES [dbo].[Questions]
+        ([QuestionId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FK_SurveyQuestion_Questions'
+CREATE INDEX [IX_FK_FK_SurveyQuestion_Questions]
+ON [dbo].[FK_SurveyQuestion]
+    ([Questions_QuestionId]);
 GO
 
 -- Creating foreign key on [UserId] in table 'Surveys'

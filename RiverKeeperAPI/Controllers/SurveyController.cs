@@ -35,7 +35,11 @@ namespace RiverKeeperAPI.Controllers
         [HttpPost]
         public bool Post(SurveyDO survey)
         {
-            return surveyTask.CreateSurvey(survey);
+            if(survey.isTemplate)
+            {
+                return surveyTask.CreateTemplate(survey);
+            }
+            return surveyTask.SubmitSurvey(survey);
         }
 
         // PUT: api/Survey/5

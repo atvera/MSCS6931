@@ -29,24 +29,54 @@ namespace RiverKeeperDAL
                 surveyDO.SurveyId = survey.SurveyId;
                 surveyDO.Name = survey.Name;
                 surveyDO.CreationDate = survey.CreationDate;
-                surveyDO.isTemplate = survey.isTemplate;
+
+                int numberOfQuestions = survey.Questions.Count();
+
+                for (int i = 0; i < numberOfQuestions; i++)
+                {
+                    Question questiondb = survey.Questions.ElementAt(i);
+                    QuestionDO questionDO = new QuestionDO();
+                    questionDO.QuestionId = questiondb.QuestionId;
+                    questionDO.Wording = questiondb.Wording;
+                    questionDO.Type = questiondb.Type;
+                    surveyDO.Questions.Add(questionDO);
+                }
+
+                if(!survey.isTemplate)
+                {
+                    //surveyDO.Answers = survey.Answers;
+                }
             }
             return surveyDO;
         }
 
-        public bool CreateSurvey(SurveyDO surveyDO)
+        public bool SubmitSurvey(SurveyDO surveyDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
             {
+                Console.WriteLine("Attempting to submit survey");
                 Survey surveydb = new Survey();
 
                 if (surveyDO != null)
                 {
                     surveydb.Name = surveyDO.Name;
-                    surveydb.isTemplate = surveyDO.isTemplate;
+                    surveydb.isTemplate = false;
                     surveydb.CreationDate = DateTime.Now;
                     surveydb.UserId = 1; //TODO: This will be set to the UserID that is logged in (filling the survey)
-                    //surveydb.Questions.Add(RKEntities.Questions.Find(1));
+
+                    int numberOfQuestions = surveyDO.Questions.Count();
+                    
+                    for(int i = 0; i < numberOfQuestions; i++)
+                    {
+                        QuestionDO questionDO = surveyDO.Questions.ElementAt(i);
+                        Question questiondb = new Question();
+                        questiondb.Wording = questionDO.Wording;
+                        questiondb.Type = questionDO.Type;
+                        surveydb.Questions.Add(questiondb);
+                    }
+
+                    // for each answer, surveydb.Answers.Add(answerdb)
+
                     RKEntities.Surveys.Add(surveydb);
                 }
 
@@ -67,7 +97,72 @@ namespace RiverKeeperDAL
                     }
                 }
 
-                if (dbResult != 1)
+                if (dbResult == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
+        public bool CreateSurveyTemplate(SurveyDO surveyDO)
+        {
+            using (riverkeeperEntities RKEntities = new riverkeeperEntities())
+            {
+                Console.WriteLine("Attempting to create a template");
+                Survey surveydb = new Survey();
+
+                if (surveyDO != null)
+                {
+                    List<Survey> surveys = (from s in RKEntities.Surveys
+                                            where s.isTemplate == true
+                                            select s).ToList();
+
+                    //Only one template allowed for now
+                    if (surveys.Count > 0)
+                    {
+                        Debug.WriteLine("Existing template has id {0}. Modify existing one", surveys.ElementAt(0).SurveyId.ToString());
+                        throw new Exception("Template already exists");
+                    }
+                   
+                    surveydb.Name = surveyDO.Name;
+                    surveydb.isTemplate = true;
+                    surveydb.CreationDate = DateTime.Now;
+                    surveydb.UserId = 1; //TODO: This will be set to the UserID that is logged in (filling the survey)
+
+                    int numberOfQuestions = surveyDO.Questions.Count();
+
+                    for (int i = 0; i < numberOfQuestions; i++)
+                    {
+                        QuestionDO questionDO = surveyDO.Questions.ElementAt(i);
+                        Question questiondb = new Question();
+                        questiondb.Wording = questionDO.Wording;
+                        questiondb.Type = questionDO.Type;
+                        surveydb.Questions.Add(questiondb);
+                    }
+
+                    RKEntities.Surveys.Add(surveydb);
+                }
+
+                int dbResult = 0;
+
+                try
+                {
+                    dbResult = RKEntities.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
+
+                if (dbResult == 0)
                 {
                     return false;
                 }
