@@ -178,16 +178,22 @@ namespace RiverKeeperDAL
                         Question questiondb = new Question();
                         questiondb.Wording = questionDO.Wording;
                         questiondb.Type = (ResponseFormat) questionDO.Type;
-                        questiondb.PossibleAnswers = questionDO.PossibleAnswers;
 
-                        if((questiondb.Type == ResponseFormat.MultipleSelection 
-                            || questiondb.Type == ResponseFormat.SingleSelection)
-                            && questiondb.PossibleAnswers == null)
+                        Boolean shouldListPossibleAnswers = (questiondb.Type == ResponseFormat.MultipleSelection
+                            || questiondb.Type == ResponseFormat.SingleSelection);
+
+                        if (questionDO.PossibleAnswers == null)
                         {
-                            Debug.WriteLine("Selection options expected for this question type");
-                            throw new Exception("Selection options expected for this question type. Aborting template creation");
+                            if (shouldListPossibleAnswers)
+                            {
+                                Debug.WriteLine("Selection options expected for this question type");
+                                throw new Exception("Selection options expected for this question type. Aborting template creation");
+                            }
                         }
-
+                        else if (shouldListPossibleAnswers)
+                        {
+                            questiondb.PossibleAnswers = questionDO.PossibleAnswers;
+                        }
                         surveydb.Questions.Add(questiondb);
                     }
 
