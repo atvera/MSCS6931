@@ -87,7 +87,7 @@ namespace RiverKeeperDAL
             return surveyDO;
         }
 
-        //INFO: Adds a survey response to the database
+        //INFO: Adds a submitted survey to the database
         public bool SubmitSurvey(SurveyDO surveyDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
@@ -110,10 +110,10 @@ namespace RiverKeeperDAL
                         Question questiondb = new Question();
                         questiondb.Wording = questionDO.Wording;
                         questiondb.Type = questionDO.Type;
-                        surveydb.Questions.Add(questiondb);
+                        surveydb.Questions.Add(questiondb); //TODO: questions that do not belong to a template should not get added to the Questions table
                     }
 
-                    // for each answer, surveydb.Answers.Add(answerdb)
+                    // TODO: for each answer, surveydb.Answers.Add(answerdb)
 
                     RKEntities.Surveys.Add(surveydb);
                 }
@@ -158,7 +158,7 @@ namespace RiverKeeperDAL
                                             where s.isTemplate == true
                                             select s).ToList();
 
-                    //Only one template allowed for now
+                    // Only one template allowed for now
                     if (surveys.Count > 0)
                     {
                         Debug.WriteLine("Existing template has id {0}. Modify existing one", surveys.ElementAt(0).SurveyId.ToString());
