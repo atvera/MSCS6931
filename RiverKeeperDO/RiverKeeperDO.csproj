@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuestionDO.cs" />
     <Compile Include="SurveyDO.cs" />
     <Compile Include="UserDO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

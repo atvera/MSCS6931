@@ -17,9 +17,5 @@ namespace RiverKeeperDAL
         public int QuestionId { get; set; }
         public short Type { get; set; }
         public string Wording { get; set; }
-        public string Response { get; set; }
-        public int SurveyId { get; set; }
-    
-        public virtual Survey Survey { get; set; }
     }
 }

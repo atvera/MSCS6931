@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuestionTasks.cs" />
     <Compile Include="SurveyTasks.cs" />
     <Compile Include="UserTasks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
