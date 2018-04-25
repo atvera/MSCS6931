@@ -18,6 +18,7 @@ namespace RiverKeeperDAL
         public Survey()
         {
             this.Questions = new HashSet<Question>();
+            this.Answers = new HashSet<Answer>();
         }
     
         public int SurveyId { get; set; }
@@ -29,5 +30,7 @@ namespace RiverKeeperDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answers { get; set; }
     }
 }

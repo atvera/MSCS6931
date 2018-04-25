@@ -11,7 +11,7 @@ namespace RiverKeeperDAL
 {
     public class SurveyDAO
     {
-        //INFO: Return survey with Id
+        //INFO: Return survey with given Id
         public SurveyDO GetSurvey(int id)
         {
             SurveyDO surveyDO = new SurveyDO();
@@ -29,6 +29,7 @@ namespace RiverKeeperDAL
                 surveyDO.SurveyId = survey.SurveyId;
                 surveyDO.Name = survey.Name;
                 surveyDO.CreationDate = survey.CreationDate;
+                surveyDO.isTemplate = survey.isTemplate;
 
                 int numberOfQuestions = survey.Questions.Count();
 
@@ -50,6 +51,43 @@ namespace RiverKeeperDAL
             return surveyDO;
         }
 
+        //INFO: Return survey template
+        public SurveyDO GetSurveyTemplate()
+        {
+            SurveyDO surveyDO = new SurveyDO();
+            using (riverkeeperEntities RKEntities = new riverkeeperEntities())
+            {
+                List<Survey> surveys = (from s in RKEntities.Surveys
+                                        where s.isTemplate == true
+                                        select s).ToList();
+
+                if (surveys.Count == 0)
+                {
+                    throw new Exception("No template survey stored in DB");
+                }
+                Survey survey = surveys.ElementAt(0);
+
+                surveyDO.SurveyId = survey.SurveyId;
+                surveyDO.Name = survey.Name;
+                surveyDO.CreationDate = survey.CreationDate;
+                surveyDO.isTemplate = survey.isTemplate;
+
+                int numberOfQuestions = survey.Questions.Count();
+
+                for (int i = 0; i < numberOfQuestions; i++)
+                {
+                    Question questiondb = survey.Questions.ElementAt(i);
+                    QuestionDO questionDO = new QuestionDO();
+                    questionDO.QuestionId = questiondb.QuestionId;
+                    questionDO.Wording = questiondb.Wording;
+                    questionDO.Type = questiondb.Type;
+                    surveyDO.Questions.Add(questionDO);
+                }
+            }
+            return surveyDO;
+        }
+
+        //INFO: Adds a survey response to the database
         public bool SubmitSurvey(SurveyDO surveyDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
@@ -106,6 +144,7 @@ namespace RiverKeeperDAL
             }
         }
 
+        //INFO: Create a survey template
         public bool CreateSurveyTemplate(SurveyDO surveyDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/24/2018 18:47:59
+-- Date Created: 04/24/2018 23:21:05
 -- Generated from EDMX file: C:\Users\anat_\Documents\GitHub\MSCS6931\RiverKeeperDAL\RiverKeeper.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_SurveyQuestion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_SurveyQuestion];
+IF OBJECT_ID(N'[dbo].[FK_FK_SurveyQuestion_Surveys]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FK_SurveyQuestion] DROP CONSTRAINT [FK_FK_SurveyQuestion_Surveys];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FK_SurveyQuestion_Questions]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FK_SurveyQuestion] DROP CONSTRAINT [FK_FK_SurveyQuestion_Questions];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserSurvey]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Surveys] DROP CONSTRAINT [FK_UserSurvey];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AnswerQuestion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_AnswerQuestion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AnswerSurvey]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_AnswerSurvey];
 GO
 
 -- --------------------------------------------------
@@ -36,6 +45,12 @@ IF OBJECT_ID(N'[dbo].[Surveys]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[Answers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Answers];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SurveyQuestion]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FK_SurveyQuestion];
 GO
 
 -- --------------------------------------------------
@@ -72,6 +87,15 @@ CREATE TABLE [dbo].[Users] (
 );
 GO
 
+-- Creating table 'Answers'
+CREATE TABLE [dbo].[Answers] (
+    [AnswerId] int IDENTITY(1,1) NOT NULL,
+    [Response] nvarchar(max)  NOT NULL,
+    [Question_QuestionId] int  NOT NULL,
+    [Survey_SurveyId] int  NOT NULL
+);
+GO
+
 -- Creating table 'FK_SurveyQuestion'
 CREATE TABLE [dbo].[FK_SurveyQuestion] (
     [FK_SurveyQuestion_Questions_SurveyId] int  NOT NULL,
@@ -99,6 +123,12 @@ GO
 ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([UserId] ASC);
+GO
+
+-- Creating primary key on [AnswerId] in table 'Answers'
+ALTER TABLE [dbo].[Answers]
+ADD CONSTRAINT [PK_Answers]
+    PRIMARY KEY CLUSTERED ([AnswerId] ASC);
 GO
 
 -- Creating primary key on [FK_SurveyQuestion_Questions_SurveyId], [Questions_QuestionId] in table 'FK_SurveyQuestion'
@@ -148,6 +178,36 @@ GO
 CREATE INDEX [IX_FK_UserSurvey]
 ON [dbo].[Surveys]
     ([UserId]);
+GO
+
+-- Creating foreign key on [Question_QuestionId] in table 'Answers'
+ALTER TABLE [dbo].[Answers]
+ADD CONSTRAINT [FK_AnswerQuestion]
+    FOREIGN KEY ([Question_QuestionId])
+    REFERENCES [dbo].[Questions]
+        ([QuestionId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AnswerQuestion'
+CREATE INDEX [IX_FK_AnswerQuestion]
+ON [dbo].[Answers]
+    ([Question_QuestionId]);
+GO
+
+-- Creating foreign key on [Survey_SurveyId] in table 'Answers'
+ALTER TABLE [dbo].[Answers]
+ADD CONSTRAINT [FK_AnswerSurvey]
+    FOREIGN KEY ([Survey_SurveyId])
+    REFERENCES [dbo].[Surveys]
+        ([SurveyId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AnswerSurvey'
+CREATE INDEX [IX_FK_AnswerSurvey]
+ON [dbo].[Answers]
+    ([Survey_SurveyId]);
 GO
 
 -- --------------------------------------------------

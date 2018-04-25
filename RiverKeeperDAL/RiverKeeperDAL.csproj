@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Answer.cs">
+      <DependentUpon>RiverKeeper.tt</DependentUpon>
+    </Compile>
     <Compile Include="QuestionDAO.cs" />
     <Compile Include="SurveyDAO.cs" />
     <Compile Include="UserDAO.cs" />

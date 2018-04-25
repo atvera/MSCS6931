@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="riverkeeperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Answers">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Response" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Question_QuestionId" Type="int" Nullable="false" />
+          <Property Name="Survey_SurveyId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="FK_SurveyQuestion">
           <Key>
             <PropertyRef Name="FK_SurveyQuestion_Questions_SurveyId" />
@@ -43,6 +52,30 @@
           <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ZipCode" Type="nchar" MaxLength="10" />
         </EntityType>
+        <Association Name="FK_AnswerQuestion">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="Question_QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerSurvey">
+          <End Role="Surveys" Type="Self.Surveys" Multiplicity="1" />
+          <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Surveys">
+              <PropertyRef Name="SurveyId" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="Survey_SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FK_SurveyQuestion_Questions">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
           <End Role="FK_SurveyQuestion" Type="Self.FK_SurveyQuestion" Multiplicity="*" />
@@ -80,10 +113,19 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="riverkeeperModelStoreContainer">
+          <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FK_SurveyQuestion" EntityType="Self.FK_SurveyQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AnswerQuestion" Association="Self.FK_AnswerQuestion">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerSurvey" Association="Self.FK_AnswerSurvey">
+            <End Role="Surveys" EntitySet="Surveys" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
           <AssociationSet Name="FK_FK_SurveyQuestion_Questions" Association="Self.FK_FK_SurveyQuestion_Questions">
             <End Role="Questions" EntitySet="Questions" />
             <End Role="FK_SurveyQuestion" EntitySet="FK_SurveyQuestion" />
@@ -120,6 +162,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Questions" Relationship="Self.FK_SurveyQuestion" FromRole="Surveys" ToRole="Questions" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserSurvey" FromRole="Surveys" ToRole="Users" />
+          <NavigationProperty Name="Answers" Relationship="riverkeeperModel.AnswerSurvey" FromRole="Survey" ToRole="Answer" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -162,7 +205,33 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Surveys" EntitySet="Surveys" />
           </AssociationSet>
+          <EntitySet Name="Answers" EntityType="riverkeeperModel.Answer" />
+          <AssociationSet Name="AnswerQuestion" Association="riverkeeperModel.AnswerQuestion">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="AnswerSurvey" Association="riverkeeperModel.AnswerSurvey">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Survey" EntitySet="Surveys" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Response" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Question" Relationship="riverkeeperModel.AnswerQuestion" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="Survey" Relationship="riverkeeperModel.AnswerSurvey" FromRole="Answer" ToRole="Survey" />
+        </EntityType>
+        <Association Name="AnswerQuestion">
+          <End Type="riverkeeperModel.Answer" Role="Answer" Multiplicity="*" />
+          <End Type="riverkeeperModel.Question" Role="Question" Multiplicity="1" />
+        </Association>
+        <Association Name="AnswerSurvey">
+          <End Type="riverkeeperModel.Answer" Role="Answer" Multiplicity="*" />
+          <End Type="riverkeeperModel.Survey" Role="Survey" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -202,12 +271,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="IsTypeOf(riverkeeperModel.Answer)">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="FK_SurveyQuestion" TypeName="riverkeeperModel.FK_SurveyQuestion" StoreEntitySet="FK_SurveyQuestion">
       <EndProperty Name="Surveys">
         <ScalarProperty Name="SurveyId" ColumnName="FK_SurveyQuestion_Questions_SurveyId" />
       </EndProperty>
       <EndProperty Name="Questions">
         <ScalarProperty Name="QuestionId" ColumnName="Questions_QuestionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AnswerQuestion" TypeName="riverkeeperModel.AnswerQuestion" StoreEntitySet="Answers">
+      <EndProperty Name="Question">
+        <ScalarProperty Name="QuestionId" ColumnName="Question_QuestionId" />
+      </EndProperty>
+      <EndProperty Name="Answer">
+        <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AnswerSurvey" TypeName="riverkeeperModel.AnswerSurvey" StoreEntitySet="Answers">
+      <EndProperty Name="Survey">
+        <ScalarProperty Name="SurveyId" ColumnName="Survey_SurveyId" />
+      </EndProperty>
+      <EndProperty Name="Answer">
+        <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

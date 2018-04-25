@@ -5,11 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9dd5f5a826c4442bbcda74deef2121c2" Name="Diagram1">
-        <EntityTypeShape EntityType="riverkeeperModel.Question" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="riverkeeperModel.Question" Width="1.5" PointX="5.25" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="riverkeeperModel.Survey" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="riverkeeperModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="riverkeeperModel.FK_SurveyQuestion" ManuallyRouted="false" />
         <AssociationConnector Association="riverkeeperModel.FK_UserSurvey" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="riverkeeperModel.Answer" Width="1.5" PointX="5.25" PointY="3.125" />
+        <AssociationConnector Association="riverkeeperModel.AnswerQuestion" />
+        <AssociationConnector Association="riverkeeperModel.AnswerSurvey" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

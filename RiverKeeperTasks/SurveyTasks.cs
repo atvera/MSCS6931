@@ -26,5 +26,10 @@ namespace RiverKeeperTasks
         {
             return surveyDAO.CreateSurveyTemplate(survey);
         }
+
+        public SurveyDO GetSurveyTemplate()
+        {
+            return surveyDAO.GetSurveyTemplate();
+        }
     }
 }

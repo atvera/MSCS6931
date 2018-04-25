@@ -481,6 +481,25 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:RiverKeeperAPI.Controllers.SurveyController.Get(System.Int32)">
+            <summary>
+            Returns the survey with the given id
+            </summary>
+            <returns>A JSON object with the stored survey.</returns>
+        </member>
+        <member name="M:RiverKeeperAPI.Controllers.SurveyController.GetTemplate">
+            <summary>
+            Returns the template survey
+            </summary>
+            <returns>A JSON object with the template survey.</returns>
+        </member>
+        <member name="M:RiverKeeperAPI.Controllers.SurveyController.Post(RiverKeeperDO.SurveyDO)">
+            <summary>
+            If the submitted survey is a template, creates a new template
+            else, submits a survey response
+            </summary>
+            <returns>True if transaction was successful</returns>
+        </member>
         <member name="M:RiverKeeperAPI.Controllers.UserController.Get">
             <summary>
              Returns all users
