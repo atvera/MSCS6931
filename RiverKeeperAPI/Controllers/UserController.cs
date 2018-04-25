@@ -15,6 +15,10 @@ namespace RiverKeeperAPI.Controllers
     {
         UserTasks userTask = new UserTasks();
         // GET: api/User
+        /// <summary>
+        ///  Returns all users
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -32,18 +36,17 @@ namespace RiverKeeperAPI.Controllers
         }
 
         // GET: api/User/5
-        public string Get(int id)
+        /// <summary>
+        /// Get user by email address.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IHttpActionResult Get(string email)
         {
-            return "value";
-        }
+            UserDO user = userTask.GetUser(email);
 
-        // POST: api/User
-        //[HttpPost]
-        //public string Post([FromBody]string value)
-        //{
-        //    Console.WriteLine(value);
-        //    return value;
-        //}
+            return Json(user);
+        }
 
          [HttpPost]
          public bool Post(UserDO user)
