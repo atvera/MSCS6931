@@ -13,6 +13,11 @@ namespace RiverKeeperTasks
     {
         UserDAO userDAO = new UserDAO();
 
+        public UserDO GetUser(string email)
+        {
+            return userDAO.GetUser(email);
+        }
+
         public List<UserDO> GetUsers()
         {
             return userDAO.GetUsers();
