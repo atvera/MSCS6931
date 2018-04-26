@@ -481,17 +481,23 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:RiverKeeperAPI.Controllers.QuestionController.Get">
+            <summary>
+            Returns the survey questions
+            </summary>
+            <returns>A JSON list of questions.</returns>
+        </member>
+        <member name="M:RiverKeeperAPI.Controllers.QuestionController.Post">
+            <summary>
+            Creates the list of survey questions from an internal file
+            </summary>
+            <returns>True if transaction was successful</returns>
+        </member>
         <member name="M:RiverKeeperAPI.Controllers.SurveyController.Get(System.Int32)">
             <summary>
             Returns the survey with the given id
             </summary>
             <returns>A JSON object with the stored survey.</returns>
-        </member>
-        <member name="M:RiverKeeperAPI.Controllers.SurveyController.GetTemplate">
-            <summary>
-            Returns the template survey
-            </summary>
-            <returns>A JSON object with the template survey.</returns>
         </member>
         <member name="M:RiverKeeperAPI.Controllers.SurveyController.Post(RiverKeeperDO.SurveyDO)">
             <summary>

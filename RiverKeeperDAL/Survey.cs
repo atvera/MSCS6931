@@ -17,19 +17,14 @@ namespace RiverKeeperDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Survey()
         {
-            this.Questions = new HashSet<Question>();
             this.Answers = new HashSet<Answer>();
         }
     
         public int SurveyId { get; set; }
         public string Name { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public bool isTemplate { get; set; }
         public int UserId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Question> Questions { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
     }

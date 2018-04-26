@@ -1,0 +1,115 @@
+{
+  "Questions": [
+  	{
+      "Type": 1,
+      "Wording": "Your name:"
+    },
+	{
+      "Type": 1,
+      "Wording": "Station name:"
+    },
+	{
+      "Type": 2,
+      "Wording": "Monitoring Date and Time:"
+    },
+    {
+      "Type": 3,
+      "Wording": "Water Conditions",
+      "PossibleAnswers": "Calm,Slight Movement,Moderate Flow or Waves,Rough or fast flowing"
+    },
+	{
+      "Type": 3,
+      "Wording": "Water Level",
+      "PossibleAnswers": "High,Normal,Low"
+    },
+	{
+      "Type": 3,
+      "Wording": "How aesthetically pleasing do you find the site?",
+      "PossibleAnswers": "Very pleasing,Somewhat pleasing,Neither pleasing nor displeasing,Somewhat displeasing,Very displeasing"
+    },
+	{
+      "Type": 1,
+      "Wording": "Please describe. List any factors that make it pleasing or not pleasing"
+    },
+	{
+      "Type": 3,
+      "Wording": "Is the color or clarity of the water unattractive?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 1,
+      "Wording": "If YES, please describe"
+    },
+	{
+      "Type": 3,
+      "Wording": "If YES, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "If YES, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "Please select the choice that best describes the present water color appearance",
+	  "PossibleAnswers": "Colorless,Red,Green,Brown,Other"
+    },
+	{
+      "Type": 1,
+      "Wording": "If Other, please describe"
+    },
+	{
+      "Type": 3,
+      "Wording": "Please select the choice that best describes the present water clarity appearance",
+	  "PossibleAnswers": "Completely clear,Fairly clear,Fairly cloudy,Completely cloudy"
+    },
+	{
+      "Type": 4,
+      "Wording": "Please select any applicable attribute related to the present water surface",
+	  "PossibleAnswers": "Normal,Oily sheen,Foamy,Floating aquatic plants,Natural debris,Neon green sheen,Other"
+    },
+	{
+      "Type": 1,
+      "Wording": "If Other, please indicate"
+    },
+	{
+      "Type": 3,
+      "Wording": "Is there floating or submerged garbage present in the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 4,
+      "Wording": "If yes, please select visible item(s)",
+	  "PossibleAnswers": "Building materials,Medical items,Household waste,Sewage-related litter,Food-related litter,Fishing-related litter,Other"
+    },
+	{
+      "Type": 1,
+      "Wording": "If Other, please indicate"
+    },
+	{
+      "Type": 3,
+      "Wording": "If yes, does the garbage in the water prevent you from accessing, enjoying, or using the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "Are there any other substances present in the water that are nor specifically mentioned on this form?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 1,
+      "Wording": "If yes, list what"
+    },
+	{
+      "Type": 3,
+      "Wording": "If yes, do these other substances in the water prevent you from accessing, enjoying, or using the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "",
+	  "PossibleAnswers": "Yes,No"
+    }
+  ]
+}

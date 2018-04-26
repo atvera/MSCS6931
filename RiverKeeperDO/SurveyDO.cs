@@ -10,13 +10,14 @@ namespace RiverKeeperDO
     {
         public SurveyDO()
         {
-            this.Questions = new HashSet<QuestionDO>();
+            this.Answers = new HashSet<AnswerDO>();
         }
 
         public int SurveyId { get; set; }
         public string Name { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public bool isTemplate { get; set; }
-        public ICollection<QuestionDO> Questions { get; set; }
+        public int UserId { get; set; }
+
+        public virtual ICollection<AnswerDO> Answers { get; set; }
     }
 }
