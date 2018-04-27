@@ -17,9 +17,9 @@ namespace RiverKeeperDAL
             List<QuestionDO> questionDOs = new List<QuestionDO>();
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
             {
-                List<Question> Questions = (from q in RKEntities.Questions
+                List<Question> questions = (from q in RKEntities.Questions
                                             select q).ToList();
-                foreach (var question in Questions)
+                foreach (var question in questions)
                 {
                     if (question != null)
                     {

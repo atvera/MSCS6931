@@ -10,7 +10,7 @@
     },
 	{
       "Type": 2,
-      "Wording": "Monitoring Date and Time:"
+      "Wording": "Start of Monitoring Date and Time:"
     },
     {
       "Type": 3,
@@ -38,16 +38,16 @@
     },
 	{
       "Type": 1,
-      "Wording": "If YES, please describe"
+      "Wording": "If yes, please describe"
     },
 	{
       "Type": 3,
-      "Wording": "If YES, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
+      "Wording": "If yes, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
 	  "PossibleAnswers": "Yes,No"
     },
 	{
       "Type": 3,
-      "Wording": "If YES, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
+      "Wording": "If yes, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
 	  "PossibleAnswers": "Yes,No"
     },
 	{
@@ -57,7 +57,7 @@
     },
 	{
       "Type": 1,
-      "Wording": "If Other, please describe"
+      "Wording": "If other, please describe"
     },
 	{
       "Type": 3,
@@ -71,7 +71,7 @@
     },
 	{
       "Type": 1,
-      "Wording": "If Other, please indicate"
+      "Wording": "If other, please indicate"
     },
 	{
       "Type": 3,
@@ -85,7 +85,7 @@
     },
 	{
       "Type": 1,
-      "Wording": "If Other, please indicate"
+      "Wording": "If other, please indicate"
     },
 	{
       "Type": 3,
@@ -108,8 +108,81 @@
     },
 	{
       "Type": 3,
-      "Wording": "",
+      "Wording": "Is there garbage along the shoreline?",
 	  "PossibleAnswers": "Yes,No"
-    }
+    },
+	{
+      "Type": 4,
+      "Wording": "If yes, please select type(s)",
+	  "PossibleAnswers": "Building materials,Medical items,Household waste,Sewage-related litter,Food-related litter,Fishing-related litter,Other"
+    },
+	{
+      "Type": 1,
+      "Wording": "If other, please indicate"
+    },
+	{
+      "Type": 3,
+      "Wording": "If yes, does the shoreline garbage prevent you from accessing, enjoying or using water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "Along the shoreline, are there problem animals or problems caused by animals?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 1,
+      "Wording": "If yes, list type(s)"
+    },
+	{
+      "Type": 3,
+      "Wording": "If yes, do these animal-related problems prevent you from accessing, enjoying, or using the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "Is there nuisance vegetation along the shoreline?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 1,
+      "Wording": "If yes, list type and amount (if known)"
+    },
+	{
+      "Type": 3,
+      "Wording": "If yes, dies this nuisance vegetation prevent you from accessing, enjoying, or using the water?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "Are there any other shoreline substances that are not specifically mentioned on this form?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 1,
+      "Wording": "If yes, list type(s)"
+    },
+	{
+      "Type": 3,
+      "Wording": "Do these other shoreline substances prevent you from accessing, enjoying, or using the water",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 3,
+      "Wording": "Have you previously evaluated this station?",
+	  "PossibleAnswers": "Yes,No"
+    },
+	{
+      "Type": 1,
+      "Wording": "If you have previously evaluated this station, what changes if any have you notices in the aesthetic quality of the water or along the shoreline since your last visit?"
+    },
+	{
+      "Type": 1,
+      "Wording": "Comments: Please include anything else you thought should be reported while completing this survey."
+    },
+	{
+      "Type": 2,
+      "Wording": "End of Monitoring Date and Time:"
+    },
   ]
 }

@@ -44,7 +44,7 @@ namespace RiverKeeperDAL
             return surveyDO;
         }
 
-        //INFO: Adds a submitted survey to the database
+        //INFO: Adds a new survey to the database
         public bool SubmitSurvey(SurveyDO surveyDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())

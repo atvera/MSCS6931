@@ -38,8 +38,6 @@ namespace RiverKeeperDAL
                      select u).ToList();
                 foreach (var user in Users)
                 {
-
-
                     if (user != null)
                     {
                         UserDO userDO = new UserDO()
