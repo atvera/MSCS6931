@@ -10,15 +10,6 @@
     <EntitySet Name="Surveys" EntityType="riverkeeperModel.Store.Surveys" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="riverkeeperModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answers" EntityType="riverkeeperModel.Store.Answers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="FK_SurveyQuestion" EntityType="riverkeeperModel.Store.FK_SurveyQuestion" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_FK_SurveyQuestion_Surveys" Association="riverkeeperModel.Store.FK_FK_SurveyQuestion_Surveys">
-      <End Role="Surveys" EntitySet="Surveys" />
-      <End Role="FK_SurveyQuestion" EntitySet="FK_SurveyQuestion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_FK_SurveyQuestion_Questions" Association="riverkeeperModel.Store.FK_FK_SurveyQuestion_Questions">
-      <End Role="Questions" EntitySet="Questions" />
-      <End Role="FK_SurveyQuestion" EntitySet="FK_SurveyQuestion" />
-    </AssociationSet>
     <AssociationSet Name="FK_UserSurvey" Association="riverkeeperModel.Store.FK_UserSurvey">
       <End Role="Users" EntitySet="Users" />
       <End Role="Surveys" EntitySet="Surveys" />
@@ -48,7 +39,6 @@
     <Property Name="SurveyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreationDate" Type="datetime" Nullable="false" />
-    <Property Name="isTemplate" Type="bit" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
@@ -69,16 +59,8 @@
     </Key>
     <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Response" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Question_QuestionId" Type="int" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
     <Property Name="Survey_SurveyId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="FK_SurveyQuestion">
-    <Key>
-      <PropertyRef Name="FK_SurveyQuestion_Questions_SurveyId" />
-      <PropertyRef Name="Questions_QuestionId" />
-    </Key>
-    <Property Name="FK_SurveyQuestion_Questions_SurveyId" Type="int" Nullable="false" />
-    <Property Name="Questions_QuestionId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_UserSurvey">
     <End Role="Users" Type="riverkeeperModel.Store.Users" Multiplicity="1" />
@@ -100,7 +82,7 @@
         <PropertyRef Name="QuestionId" />
       </Principal>
       <Dependent Role="Answer">
-        <PropertyRef Name="Question_QuestionId" />
+        <PropertyRef Name="QuestionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -113,30 +95,6 @@
       </Principal>
       <Dependent Role="Answer">
         <PropertyRef Name="Survey_SurveyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FK_SurveyQuestion_Surveys">
-    <End Role="Surveys" Type="riverkeeperModel.Store.Surveys" Multiplicity="1" />
-    <End Role="FK_SurveyQuestion" Type="riverkeeperModel.Store.FK_SurveyQuestion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Surveys">
-        <PropertyRef Name="SurveyId" />
-      </Principal>
-      <Dependent Role="FK_SurveyQuestion">
-        <PropertyRef Name="FK_SurveyQuestion_Questions_SurveyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FK_SurveyQuestion_Questions">
-    <End Role="FK_SurveyQuestion" Type="riverkeeperModel.Store.FK_SurveyQuestion" Multiplicity="*" />
-    <End Role="Questions" Type="riverkeeperModel.Store.Questions" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Questions">
-        <PropertyRef Name="QuestionId" />
-      </Principal>
-      <Dependent Role="FK_SurveyQuestion">
-        <PropertyRef Name="Questions_QuestionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -160,10 +118,7 @@
           <Property Name="SurveyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="isTemplate" Type="Boolean" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK_SurveyQuestion" FromRole="Surveys" ToRole="Questions" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserSurvey" FromRole="Surveys" ToRole="Users" />
           <NavigationProperty Name="Answers" Relationship="riverkeeperModel.AnswerSurvey" FromRole="Survey" ToRole="Answer" />
         </EntityType>
         <EntityType Name="User">
@@ -179,10 +134,6 @@
           <NavigationProperty Name="Surveys" Relationship="Self.FK_UserSurvey" FromRole="Users" ToRole="Surveys" />
           <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <Association Name="FK_SurveyQuestion">
-          <End Role="Surveys" Type="Self.Survey" Multiplicity="*" />
-          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
-        </Association>
         <Association Name="FK_UserSurvey">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Surveys" Type="Self.Survey" Multiplicity="*" />
@@ -199,10 +150,6 @@
           <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="Surveys" EntityType="Self.Survey" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_SurveyQuestion" Association="Self.FK_SurveyQuestion">
-            <End Role="Surveys" EntitySet="Surveys" />
-            <End Role="Questions" EntitySet="Questions" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserSurvey" Association="Self.FK_UserSurvey">
             <End Role="Users" EntitySet="Users" />
             <End Role="Surveys" EntitySet="Surveys" />
@@ -223,12 +170,20 @@
           </Key>
           <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Response" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Question" Relationship="riverkeeperModel.AnswerQuestion" FromRole="Answer" ToRole="Question" />
           <NavigationProperty Name="Survey" Relationship="riverkeeperModel.AnswerSurvey" FromRole="Answer" ToRole="Survey" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="AnswerQuestion">
           <End Type="riverkeeperModel.Answer" Role="Answer" Multiplicity="*" />
           <End Type="riverkeeperModel.Question" Role="Question" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="AnswerSurvey">
           <End Type="riverkeeperModel.Answer" Role="Answer" Multiplicity="*" />
@@ -262,7 +217,6 @@
           <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-          <ScalarProperty Name="isTemplate" ColumnName="isTemplate" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -285,25 +239,10 @@
         <MappingFragment StoreEntitySet="Answers">
           <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
           <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_SurveyQuestion" TypeName="riverkeeperModel.FK_SurveyQuestion" StoreEntitySet="FK_SurveyQuestion">
-      <EndProperty Name="Surveys">
-        <ScalarProperty Name="SurveyId" ColumnName="FK_SurveyQuestion_Questions_SurveyId" />
-      </EndProperty>
-      <EndProperty Name="Questions">
-        <ScalarProperty Name="QuestionId" ColumnName="Questions_QuestionId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AnswerQuestion" TypeName="riverkeeperModel.AnswerQuestion" StoreEntitySet="Answers">
-      <EndProperty Name="Question">
-        <ScalarProperty Name="QuestionId" ColumnName="Question_QuestionId" />
-      </EndProperty>
-      <EndProperty Name="Answer">
-        <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="AnswerSurvey" TypeName="riverkeeperModel.AnswerSurvey" StoreEntitySet="Answers">
       <EndProperty Name="Survey">
         <ScalarProperty Name="SurveyId" ColumnName="Survey_SurveyId" />

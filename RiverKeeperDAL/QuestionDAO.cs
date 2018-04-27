@@ -42,19 +42,17 @@ namespace RiverKeeperDAL
             return questionDOs;
         }
 
+        //INFO: Adds a question to the database.
         public bool CreateQuestion(QuestionDO questionDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
             {
                 Question questiondb = new Question();
 
-                if (questionDO != null)
-                {
-                    questiondb.Wording = questionDO.Wording;
-                    questiondb.Type = (ResponseFormat) questionDO.Type;
-                    questiondb.PossibleAnswers = questionDO.PossibleAnswers;
-                    RKEntities.Questions.Add(questiondb);
-                }
+                questiondb.Wording = questionDO.Wording;
+                questiondb.Type = (ResponseFormat)questionDO.Type;
+                questiondb.PossibleAnswers = questionDO.PossibleAnswers;
+                RKEntities.Questions.Add(questiondb);
 
                 int dbResult = 0;
 

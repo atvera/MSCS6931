@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="riverkeeperModel.Question" Width="1.5" PointX="5.25" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="riverkeeperModel.Survey" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="riverkeeperModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="riverkeeperModel.FK_SurveyQuestion" ManuallyRouted="false" />
         <AssociationConnector Association="riverkeeperModel.FK_UserSurvey" ManuallyRouted="false" />
         <EntityTypeShape EntityType="riverkeeperModel.Answer" Width="1.5" PointX="5.25" PointY="3.125" />
         <AssociationConnector Association="riverkeeperModel.AnswerQuestion" />

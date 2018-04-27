@@ -35,6 +35,7 @@ namespace RiverKeeperAPI.Controllers
             return Json(survey);
         }
 
+        /*
         // GET api/Survey/Template
         /// <summary>
         /// Returns the template survey
@@ -42,34 +43,17 @@ namespace RiverKeeperAPI.Controllers
         /// <returns>A JSON object with the template survey.</returns>
         [Route("api/Survey/Template")]
         [HttpGet] 
-        public IHttpActionResult GetTemplate()
-        {
-            SurveyDO survey = null;
-            try
-            {
-                survey = surveyTask.GetSurveyTemplate();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-
-            return Json(survey);
-        }
+        public IHttpActionResult GetTemplate()*/
+       
 
         // POST: api/Survey
         /// <summary>
-        /// If the submitted survey is a template, creates a new template
-        /// else, submits a survey response
+        /// Submit a survey and save it in the database
         /// </summary>
         /// <returns>True if transaction was successful</returns>
         [HttpPost]
         public bool Post(SurveyDO survey)
-        {
-            if(survey.isTemplate)
-            {
-                return surveyTask.CreateTemplate(survey);
-            }
+        { 
             return surveyTask.SubmitSurvey(survey);
         }
 
