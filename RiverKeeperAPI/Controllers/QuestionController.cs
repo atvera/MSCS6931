@@ -18,6 +18,7 @@ namespace RiverKeeperAPI.Controllers
         /// Returns the survey questions
         /// </summary>
         /// <returns>A JSON list of questions.</returns>
+        [Route("api/AllQuestions")]
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -39,20 +40,11 @@ namespace RiverKeeperAPI.Controllers
         /// Creates the list of survey questions from an internal file
         /// </summary>
         /// <returns>True if transaction was successful</returns>
+        [Route("api/CreateQuestions")]
         [HttpPost]
         public bool Post()
         {
             return questionTask.CreateQuestions();
-        }
-
-        // PUT: api/Survey/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Survey/5
-        public void Delete(int id)
-        {
         }
     }
 }

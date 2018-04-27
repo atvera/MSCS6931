@@ -48,8 +48,7 @@ namespace RiverKeeperAPI.Controllers
 
         // POST: api/Survey
         /// <summary>
-        /// If the submitted survey is a template, creates a new template
-        /// else, submits a survey response
+        /// Submit a survey and save it in the database
         /// </summary>
         /// <returns>True if transaction was successful</returns>
         [HttpPost]
