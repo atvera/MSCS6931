@@ -10,7 +10,8 @@ using RiverKeeperTasks;
 using System.Web.Script.Serialization;
 
 namespace RiverKeeperAPI.Controllers
-{ 
+{
+    [Authorize]
     public class UserController : ApiController
     {
         UserTasks userTask = new UserTasks();

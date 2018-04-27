@@ -10,6 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace RiverKeeperAPI.Controllers
 {
+    [Authorize]
     public class SurveyController : ApiController
     {
         SurveyTasks surveyTask = new SurveyTasks();

@@ -4,6 +4,19 @@
         <name>RiverKeeperAPI</name>
     </assembly>
     <members>
+        <member name="M:RiverKeeperAPI.Startup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            Configure OWIN to use OpenIdConnect 
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="M:RiverKeeperAPI.Startup.OnAuthenticationFailed(Microsoft.Owin.Security.Notifications.AuthenticationFailedNotification{Microsoft.IdentityModel.Protocols.OpenIdConnect.OpenIdConnectMessage,Microsoft.Owin.Security.OpenIdConnect.OpenIdConnectAuthenticationOptions})">
+            <summary>
+            Handle failed authentication requests by redirecting the user to the home page with an error in the query string
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
         <member name="M:RiverKeeperAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
             Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
