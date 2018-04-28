@@ -20,6 +20,7 @@ namespace RiverKeeperAPI.Controllers
         ///  Returns all users
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public IHttpActionResult Get()
         {
