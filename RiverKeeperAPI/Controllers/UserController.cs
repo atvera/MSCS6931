@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace RiverKeeperAPI.Controllers
 { 
+    //[Authorize]
     public class UserController : ApiController
     {
         UserTasks userTask = new UserTasks();
@@ -23,6 +24,7 @@ namespace RiverKeeperAPI.Controllers
         public IHttpActionResult Get()
         {
             List<UserDO> users = null;
+ 
             try
             {
                 users = userTask.GetUsers();

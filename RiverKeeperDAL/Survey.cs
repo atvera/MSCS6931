@@ -18,14 +18,19 @@ namespace RiverKeeperDAL
         public Survey()
         {
             this.Answers = new HashSet<Answer>();
+            this.Questions = new HashSet<Question>();
         }
     
         public int SurveyId { get; set; }
         public string Name { get; set; }
         public System.DateTime CreationDate { get; set; }
         public int UserId { get; set; }
+        public string Period { get; set; }
+        public bool isTemplate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

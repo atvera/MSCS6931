@@ -10,7 +10,7 @@ namespace RiverKeeperAPI.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Milwaukee Riverkeeper Survey";
 
             return View();
         }

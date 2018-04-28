@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="riverkeeperModel.Answer" Width="1.5" PointX="5.25" PointY="3.125" />
         <AssociationConnector Association="riverkeeperModel.AnswerQuestion" />
         <AssociationConnector Association="riverkeeperModel.AnswerSurvey" />
+        <AssociationConnector Association="riverkeeperModel.FK_SurveyQuestion" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

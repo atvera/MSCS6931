@@ -9,6 +9,7 @@ using RiverKeeperTasks;
 
 namespace RiverKeeperAPI.Controllers
 {
+    [Authorize]
     public class QuestionController : ApiController
     {
         QuestionTasks questionTask = new QuestionTasks();

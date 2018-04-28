@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/25/2018 23:58:04
--- Generated from EDMX file: C:\Users\anat_\Documents\GitHub\MSCS6931\RiverKeeperDAL\RiverKeeper.edmx
+-- Date Created: 04/26/2018 23:13:54
+-- Generated from EDMX file: C:\Users\brady\Desktop\MSCS6931\RiverKeeperDAL\RiverKeeper.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -25,6 +25,9 @@ IF OBJECT_ID(N'[dbo].[FK_AnswerQuestion]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_AnswerSurvey]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answers] DROP CONSTRAINT [FK_AnswerSurvey];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SurveyQuestion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_SurveyQuestion];
 GO
 
 -- --------------------------------------------------
@@ -53,7 +56,9 @@ CREATE TABLE [dbo].[Questions] (
     [QuestionId] int IDENTITY(1,1) NOT NULL,
     [Type] smallint  NOT NULL,
     [Wording] nvarchar(max)  NOT NULL,
-    [PossibleAnswers] nvarchar(max)  NULL
+    [PossibleAnswers] nvarchar(max)  NULL,
+    [Response] nvarchar(max)  NOT NULL,
+    [SurveyId] int  NOT NULL
 );
 GO
 
@@ -62,7 +67,9 @@ CREATE TABLE [dbo].[Surveys] (
     [SurveyId] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [CreationDate] datetime  NOT NULL,
-    [UserId] int  NOT NULL
+    [UserId] int  NOT NULL,
+    [Period] nvarchar(max)  NOT NULL,
+    [isTemplate] bit  NOT NULL
 );
 GO
 
@@ -162,6 +169,21 @@ GO
 CREATE INDEX [IX_FK_AnswerSurvey]
 ON [dbo].[Answers]
     ([Survey_SurveyId]);
+GO
+
+-- Creating foreign key on [SurveyId] in table 'Questions'
+ALTER TABLE [dbo].[Questions]
+ADD CONSTRAINT [FK_SurveyQuestion]
+    FOREIGN KEY ([SurveyId])
+    REFERENCES [dbo].[Surveys]
+        ([SurveyId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SurveyQuestion'
+CREATE INDEX [IX_FK_SurveyQuestion]
+ON [dbo].[Questions]
+    ([SurveyId]);
 GO
 
 -- --------------------------------------------------
