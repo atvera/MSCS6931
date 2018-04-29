@@ -4,7 +4,6 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 #Config file with database connection
-RiverKeeperAPI/Web.config
 
 # User-specific files
 *.suo
