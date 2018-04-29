@@ -493,6 +493,12 @@
             </summary>
             <returns>True if transaction was successful</returns>
         </member>
+        <member name="M:RiverKeeperAPI.Controllers.QuestionController.Post(RiverKeeperDO.QuestionDO)">
+            <summary>
+            Creates a question
+            </summary>
+            <returns>True if transaction was successful</returns>
+        </member>
         <member name="M:RiverKeeperAPI.Controllers.SurveyController.Get(System.Int32)">
             <summary>
             Returns the survey with the given id
