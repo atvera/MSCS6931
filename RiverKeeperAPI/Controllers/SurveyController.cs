@@ -58,14 +58,14 @@ namespace RiverKeeperAPI.Controllers
             return surveyTask.SubmitSurvey(survey);
         }
 
-        // PUT: api/Survey/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT: api/Survey/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE: api/Survey/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/Survey/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

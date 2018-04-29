@@ -54,9 +54,12 @@ namespace RiverKeeperDAL
 
                 if (surveyDO != null)
                 {
+                    
                     surveydb.Name = surveyDO.Name;
                     surveydb.CreationDate = DateTime.Now;
-                    surveydb.UserId = 1; //TODO: This will be set to the UserID that is logged in (filling the survey)
+                    surveydb.UserId = (from u in RKEntities.Users
+                                       where u.EmailAddress.Equals(surveyDO.Email)
+                                       select u.UserId).FirstOrDefault();
 
                     int numberOfQuestions = surveyDO.Answers.Count();
                     
