@@ -14,6 +14,13 @@ namespace RiverKeeperAPI.Controllers
     {
         QuestionTasks questionTask = new QuestionTasks();
 
+        public IHttpActionResult Get(int id)
+        {
+            QuestionDO question = questionTask.GetQuestionById(id);
+
+            return Json(question);
+        }
+
         // GET: api/Questions
         /// <summary>
         /// Returns the survey questions
@@ -46,6 +53,18 @@ namespace RiverKeeperAPI.Controllers
         public bool Post()
         {
             return questionTask.CreateQuestions();
+        }
+
+        // POST: api/Question
+        /// <summary>
+        /// Creates a question
+        /// </summary>
+        /// <returns>True if transaction was successful</returns>
+        [Route("api/Question")]
+        [HttpPost]
+        public bool Post(QuestionDO question)
+        {
+            return questionTask.CreateQuestion(question);
         }
     }
 }

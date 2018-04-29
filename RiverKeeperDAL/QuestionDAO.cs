@@ -42,6 +42,31 @@ namespace RiverKeeperDAL
             return questionDOs;
         }
 
+        public QuestionDO GetQuestionById(int id)
+        {
+            QuestionDO questionDO = new QuestionDO();
+            using (riverkeeperEntities RKEntities = new riverkeeperEntities())
+            {
+                List<Question> questions = (from q in RKEntities.Questions where q.QuestionId==id
+                                            select q).ToList();
+                Question question = questions.ElementAt(0);
+
+                    if (question != null)
+                    {
+                        questionDO.QuestionId = question.QuestionId;
+                        questionDO.Type = (short)question.Type;
+                        questionDO.Wording = question.Wording;
+                        questionDO.PossibleAnswers = question.PossibleAnswers;
+                    }
+                    else
+                    {
+                        throw new Exception("No questions with that ID in DB");
+                    }
+                }
+            return questionDO;
+        }
+            
+
         //INFO: Adds a question to the database.
         public bool CreateQuestion(QuestionDO questionDO)
         {

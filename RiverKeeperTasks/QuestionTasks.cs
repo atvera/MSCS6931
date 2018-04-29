@@ -24,6 +24,11 @@ namespace RiverKeeperTasks
             return questionDAO.GetQuestions();
         }
 
+        public QuestionDO GetQuestionById(int id)
+        {
+            return questionDAO.GetQuestionById(id);
+        }
+
         public bool CreateQuestion(QuestionDO question)
         {
             if(question == null)
