@@ -40,9 +40,9 @@ namespace RiverKeeperAPI.Controllers
 
         // GET: api/User/5
         /// <summary>
-        /// Get user by email address.
+        ///    TEst
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="email"></param>
         /// <returns></returns>
         public IHttpActionResult Get(string email)
         {

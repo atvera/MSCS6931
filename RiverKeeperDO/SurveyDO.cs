@@ -16,8 +16,7 @@ namespace RiverKeeperDO
         public int SurveyId { get; set; }
         public string Name { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public int UserId { get; set; }
-
+        public string email { get; set; }
         public virtual ICollection<AnswerDO> Answers { get; set; }
     }
 }

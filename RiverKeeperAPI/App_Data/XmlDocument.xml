@@ -481,7 +481,7 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:RiverKeeperAPI.Controllers.QuestionController.Get">
+        <member name="M:RiverKeeperAPI.Controllers.QuestionController.Get(System.Int32)">
             <summary>
             Returns the survey questions
             </summary>
@@ -519,9 +519,9 @@
         </member>
         <member name="M:RiverKeeperAPI.Controllers.UserController.Get(System.String)">
             <summary>
-            Get user by email address.
+               TEst
             </summary>
-            <param name="id"></param>
+            <param name="email"></param>
             <returns></returns>
         </member>
     </members>

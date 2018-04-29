@@ -1,188 +1,228 @@
 {
   "Questions": [
-  	{
+    {
       "Type": 1,
-      "Wording": "Your name:"
+      "Wording": "Your name:",
+      "SurveyId" :  2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "Station name:"
+      "Wording": "Station name:",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 2,
-      "Wording": "Start of Monitoring Date and Time:"
+      "Wording": "Start of Monitoring Date and Time:",
+      "SurveyID": 2
     },
     {
       "Type": 3,
       "Wording": "Water Conditions",
-      "PossibleAnswers": "Calm,Slight Movement,Moderate Flow or Waves,Rough or fast flowing"
+      "PossibleAnswers": "Calm,Slight Movement,Moderate Flow or Waves,Rough or fast flowing",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Water Level",
-      "PossibleAnswers": "High,Normal,Low"
+      "PossibleAnswers": "High,Normal,Low",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "How aesthetically pleasing do you find the site?",
-      "PossibleAnswers": "Very pleasing,Somewhat pleasing,Neither pleasing nor displeasing,Somewhat displeasing,Very displeasing"
+      "PossibleAnswers": "Very pleasing,Somewhat pleasing,Neither pleasing nor displeasing,Somewhat displeasing,Very displeasing",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "Please describe. List any factors that make it pleasing or not pleasing"
+      "Wording": "Please describe. List any factors that make it pleasing or not pleasing",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Is the color or clarity of the water unattractive?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If yes, please describe"
+      "Wording": "If yes, please describe",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "If yes, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "If yes, does the unattractive water color or clarity prevent you from accessing, enjoying or using the water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Please select the choice that best describes the present water color appearance",
-	  "PossibleAnswers": "Colorless,Red,Green,Brown,Other"
+      "PossibleAnswers": "Colorless,Red,Green,Brown,Other",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If other, please describe"
+      "Wording": "If other, please describe",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Please select the choice that best describes the present water clarity appearance",
-	  "PossibleAnswers": "Completely clear,Fairly clear,Fairly cloudy,Completely cloudy"
+      "PossibleAnswers": "Completely clear,Fairly clear,Fairly cloudy,Completely cloudy",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 4,
       "Wording": "Please select any applicable attribute related to the present water surface",
-	  "PossibleAnswers": "Normal,Oily sheen,Foamy,Floating aquatic plants,Natural debris,Neon green sheen,Other"
+      "PossibleAnswers": "Normal,Oily sheen,Foamy,Floating aquatic plants,Natural debris,Neon green sheen,Other",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If other, please indicate"
+      "Wording": "If other, please indicate",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Is there floating or submerged garbage present in the water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 4,
       "Wording": "If yes, please select visible item(s)",
-	  "PossibleAnswers": "Building materials,Medical items,Household waste,Sewage-related litter,Food-related litter,Fishing-related litter,Other"
+      "PossibleAnswers": "Building materials,Medical items,Household waste,Sewage-related litter,Food-related litter,Fishing-related litter,Other",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If other, please indicate"
+      "Wording": "If other, please indicate",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "If yes, does the garbage in the water prevent you from accessing, enjoying, or using the water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Are there any other substances present in the water that are nor specifically mentioned on this form?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If yes, list what"
+      "Wording": "If yes, list what",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "If yes, do these other substances in the water prevent you from accessing, enjoying, or using the water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Is there garbage along the shoreline?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 4,
       "Wording": "If yes, please select type(s)",
-	  "PossibleAnswers": "Building materials,Medical items,Household waste,Sewage-related litter,Food-related litter,Fishing-related litter,Other"
+      "PossibleAnswers": "Building materials,Medical items,Household waste,Sewage-related litter,Food-related litter,Fishing-related litter,Other",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If other, please indicate"
+      "Wording": "If other, please indicate",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "If yes, does the shoreline garbage prevent you from accessing, enjoying or using water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Along the shoreline, are there problem animals or problems caused by animals?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If yes, list type(s)"
+      "Wording": "If yes, list type(s)",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "If yes, do these animal-related problems prevent you from accessing, enjoying, or using the water?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Is there nuisance vegetation along the shoreline?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If yes, list type and amount (if known)"
+      "Wording": "If yes, list type and amount (if known)",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
-      "Wording": "If yes, dies this nuisance vegetation prevent you from accessing, enjoying, or using the water?",
-	  "PossibleAnswers": "Yes,No"
+      "Wording": "If yes, does this nuisance vegetation prevent you from accessing, enjoying, or using the water?",
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Are there any other shoreline substances that are not specifically mentioned on this form?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If yes, list type(s)"
+      "Wording": "If yes, list type(s)",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Do these other shoreline substances prevent you from accessing, enjoying, or using the water",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 3,
       "Wording": "Have you previously evaluated this station?",
-	  "PossibleAnswers": "Yes,No"
+      "PossibleAnswers": "Yes,No",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "If you have previously evaluated this station, what changes if any have you notices in the aesthetic quality of the water or along the shoreline since your last visit?"
+      "Wording": "If you have previously evaluated this station, what changes if any have you notices in the aesthetic quality of the water or along the shoreline since your last visit?",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 1,
-      "Wording": "Comments: Please include anything else you thought should be reported while completing this survey."
+      "Wording": "Comments: Please include anything else you thought should be reported while completing this survey.",
+      "SurveyID": 2
     },
-	{
+    {
       "Type": 2,
-      "Wording": "End of Monitoring Date and Time:"
-    },
+      "Wording": "End of Monitoring Date and Time:",
+      "SurveyID": 2
+    }
   ]
 }

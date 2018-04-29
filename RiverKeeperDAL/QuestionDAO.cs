@@ -12,12 +12,13 @@ namespace RiverKeeperDAL
     public class QuestionDAO
     {
         //INFO: Return all questions in the database.
-        public List<QuestionDO> GetQuestions()
+        public List<QuestionDO> GetQuestions(int id)
         {
             List<QuestionDO> questionDOs = new List<QuestionDO>();
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())
             {
                 List<Question> questions = (from q in RKEntities.Questions
+                                            where q.SurveyId == id
                                             select q).ToList();
                 foreach (var question in questions)
                 {
@@ -28,7 +29,8 @@ namespace RiverKeeperDAL
                             QuestionId = question.QuestionId,
                             Type = (short)question.Type,
                             Wording = question.Wording,
-                            PossibleAnswers = question.PossibleAnswers
+                            PossibleAnswers = (String.IsNullOrEmpty(question.PossibleAnswers)) ? new string[0] : question.PossibleAnswers.Split(','),
+                            SurveyId = question.SurveyId
                         };
                         questionDOs.Add(questionDO);
                     }
@@ -56,7 +58,7 @@ namespace RiverKeeperDAL
                         questionDO.QuestionId = question.QuestionId;
                         questionDO.Type = (short)question.Type;
                         questionDO.Wording = question.Wording;
-                        questionDO.PossibleAnswers = question.PossibleAnswers;
+                        questionDO.PossibleAnswers = question.PossibleAnswers.Split(',');
                     }
                     else
                     {
@@ -74,10 +76,12 @@ namespace RiverKeeperDAL
             {
                 Question questiondb = new Question();
 
+                questiondb.SurveyId = questionDO.SurveyId;
                 questiondb.Wording = questionDO.Wording;
                 questiondb.Type = (ResponseFormat)questionDO.Type;
-                questiondb.PossibleAnswers = questionDO.PossibleAnswers;
+                questiondb.PossibleAnswers = String.Join(",", questionDO.PossibleAnswers);
                 RKEntities.Questions.Add(questiondb);
+                
 
                 int dbResult = 0;
 

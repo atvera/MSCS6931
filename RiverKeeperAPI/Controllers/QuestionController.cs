@@ -14,31 +14,26 @@ namespace RiverKeeperAPI.Controllers
     {
         QuestionTasks questionTask = new QuestionTasks();
 
-        public IHttpActionResult Get(int id)
-        {
-            QuestionDO question = questionTask.GetQuestionById(id);
-
-            return Json(question);
-        }
-
         // GET: api/Questions
         /// <summary>
         /// Returns the survey questions
         /// </summary>
         /// <returns>A JSON list of questions.</returns>
-        [Route("api/AllQuestions")]
+        [Route("api/AllQuestions/{id}")]
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(int id)
         {
+
             List<QuestionDO> questions = null;
-            try
-            {
-                questions = questionTask.GetQuestions();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            questions = questionTask.GetQuestions(id);
+            //try
+            //{
+            //    questions = questionTask.GetQuestions(id);
+            //}
+            //catch (Exception e)
+            //{
+            //    throw new Exception(e.Message);
+            //}
 
             return Json(questions);
         }

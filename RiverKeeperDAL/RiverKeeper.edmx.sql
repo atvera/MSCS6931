@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/26/2018 23:13:54
+-- Date Created: 04/28/2018 22:44:59
 -- Generated from EDMX file: C:\Users\brady\Desktop\MSCS6931\RiverKeeperDAL\RiverKeeper.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [riverkeeper];
+USE [RiverkeeperDB];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -57,7 +57,6 @@ CREATE TABLE [dbo].[Questions] (
     [Type] smallint  NOT NULL,
     [Wording] nvarchar(max)  NOT NULL,
     [PossibleAnswers] nvarchar(max)  NULL,
-    [Response] nvarchar(max)  NOT NULL,
     [SurveyId] int  NOT NULL
 );
 GO
@@ -67,9 +66,7 @@ CREATE TABLE [dbo].[Surveys] (
     [SurveyId] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [CreationDate] datetime  NOT NULL,
-    [UserId] int  NOT NULL,
-    [Period] nvarchar(max)  NOT NULL,
-    [isTemplate] bit  NOT NULL
+    [UserId] int  NOT NULL
 );
 GO
 

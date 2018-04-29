@@ -25,8 +25,6 @@ namespace RiverKeeperDAL
         public string Name { get; set; }
         public System.DateTime CreationDate { get; set; }
         public int UserId { get; set; }
-        public string Period { get; set; }
-        public bool isTemplate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }

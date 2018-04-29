@@ -8,6 +8,7 @@ using System.Web;
 using Newtonsoft.Json;
 using RiverKeeperDAL;
 using RiverKeeperDO;
+using System.Diagnostics;
 
 namespace RiverKeeperTasks
 {
@@ -19,14 +20,9 @@ namespace RiverKeeperTasks
     {
         QuestionDAO questionDAO = new QuestionDAO();
 
-        public List<QuestionDO> GetQuestions()
+        public List<QuestionDO> GetQuestions(int id)
         {
-            return questionDAO.GetQuestions();
-        }
-
-        public QuestionDO GetQuestionById(int id)
-        {
-            return questionDAO.GetQuestionById(id);
+            return questionDAO.GetQuestions(id);
         }
 
         public bool CreateQuestion(QuestionDO question)
@@ -49,6 +45,7 @@ namespace RiverKeeperTasks
             
             foreach (QuestionDO question in questionsList.Questions)
             {
+                Debug.WriteLine(question);
                 result = CreateQuestion(question);
             }
 

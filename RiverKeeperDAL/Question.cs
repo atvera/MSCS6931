@@ -18,7 +18,6 @@ namespace RiverKeeperDAL
         public ResponseFormat Type { get; set; }
         public string Wording { get; set; }
         public string PossibleAnswers { get; set; }
-        public string Response { get; set; }
         public int SurveyId { get; set; }
     
         public virtual Survey Survey { get; set; }
