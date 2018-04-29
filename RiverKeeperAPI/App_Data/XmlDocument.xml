@@ -519,9 +519,16 @@
         </member>
         <member name="M:RiverKeeperAPI.Controllers.UserController.Get(System.String)">
             <summary>
-               TEst
+               Get a user by their email address.
             </summary>
             <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RiverKeeperAPI.Controllers.UserController.Post(RiverKeeperDO.UserDO)">
+            <summary>
+              Create new user
+            </summary>
+            <param name="user"></param>
             <returns></returns>
         </member>
     </members>

@@ -40,9 +40,9 @@ namespace RiverKeeperAPI.Controllers
             return Json(users);
         }
 
-        // GET: api/User/5
+        // GET: api/User/?email={email}
         /// <summary>
-        ///    TEst
+        ///    Get a user by their email address.
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -53,20 +53,25 @@ namespace RiverKeeperAPI.Controllers
             return Json(user);
         }
 
+        /// <summary>
+        ///   Create new user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
          [HttpPost]
          public bool Post(UserDO user)
         {
             return userTask.CreateUser(user);
         }
 
-        // PUT: api/User/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT: api/User/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE: api/User/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/User/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

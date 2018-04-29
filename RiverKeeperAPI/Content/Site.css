@@ -2,7 +2,30 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+.jumbotron{
+    background-color: whitesmoke;
+}
+.navbar-inverse, .navbar-inverse .navbar-brand {
+    background-color: #428bca;
+    color: floralwhite;
+}
+.navbar-inverse, .navbar-inverse .navbar-brand:hover {
+        color: lightblue;
+}
 
+.navbar-inverse .navbar-nav > li > a {
+        color: floralwhite;
+ }
+
+.navbar-inverse .navbar-nav > li > a:hover {
+        color: lightblue;
+ }
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background-color: #005aaa;
+}
+.navbar-inverse .navbar-toggle {
+        border-color: #005aaa;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
