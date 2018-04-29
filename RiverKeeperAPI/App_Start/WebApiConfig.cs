@@ -13,6 +13,8 @@ namespace RiverKeeperAPI
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            //allow for cors
+            config.EnableCors();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

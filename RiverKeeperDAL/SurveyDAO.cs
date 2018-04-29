@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
@@ -90,6 +91,11 @@ namespace RiverKeeperDAL
                             Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
+                }
+                catch(DbUpdateException e)
+                {
+                  
+                    Debug.WriteLine(e.InnerException);
                 }
 
                 if (dbResult == 0)

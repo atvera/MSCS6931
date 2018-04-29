@@ -42,7 +42,6 @@ namespace RiverKeeperDAL
                     {
                         UserDO userDO = new UserDO()
                         {
-                            UserId = user.UserId,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             PhoneNumber = user.PhoneNumber,
@@ -116,7 +115,6 @@ namespace RiverKeeperDAL
             {
                 userDO = new UserDO()
                 {
-                    UserId = user.UserId,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     PhoneNumber = user.PhoneNumber,

@@ -8,7 +8,6 @@ namespace RiverKeeperDO
 {
     public class AnswerDO
     {
-        public int AnswerId { get; set; }
         public string Response { get; set; }
         public int QuestionId { get; set; }
     }

@@ -8,10 +8,12 @@ using System.Web;
 using RiverKeeperDO;
 using RiverKeeperTasks;
 using System.Web.Script.Serialization;
+using System.Web.Http.Cors;
 
 namespace RiverKeeperAPI.Controllers
-{ 
-    //[Authorize]
+{
+    [EnableCors(origins: "https://localhost:44370", headers: "*", methods: "*")]
+    [Authorize]
     public class UserController : ApiController
     {
         UserTasks userTask = new UserTasks();

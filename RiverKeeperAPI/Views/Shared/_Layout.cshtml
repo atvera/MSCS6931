@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <a href='@Url.Action("Index", "Home")' class="navbar-brand">
+        <a href='@Url.Action("Index", "Home", new { area = "" }, null)' class="navbar-brand">
             <img src="~/content/img/mrk-horizonal-logo.png" />
         </a>
         <div class="container">
@@ -33,7 +33,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Milwaukee Riverkeeper</p>
         </footer>
     </div>
 
