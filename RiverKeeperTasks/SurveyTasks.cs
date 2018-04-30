@@ -16,6 +16,11 @@ namespace RiverKeeperTasks
         {
             return surveyDAO.GetSurvey(id);
         }
+ 
+        public List<SurveyDO> GetSurveys()
+        {
+            return surveyDAO.GetSurveys();
+        }
 
         public bool SubmitSurvey(SurveyDO survey)
         {
