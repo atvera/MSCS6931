@@ -12,6 +12,51 @@ namespace RiverKeeperDAL
 {
     public class SurveyDAO
     {
+        public List<SurveyDO> GetSurveys()
+        {
+            List<SurveyDO> surveyDOs = new List<SurveyDO>();
+
+            using (riverkeeperEntities RKEntities = new riverkeeperEntities())
+            {
+                List<Survey> surveys = (from s in RKEntities.Surveys
+                                        orderby s.CreationDate
+                                        select s).ToList();
+
+                if (surveys.Count == 0)
+                {
+                    throw new Exception("No surveys in DB");
+                }
+
+                foreach (var survey in surveys)
+                {
+                    string email = (from u in RKEntities.Users
+                                    where u.UserId.Equals(survey.UserId)
+                                    select u.EmailAddress).FirstOrDefault();
+
+                    SurveyDO surveyDO = new SurveyDO();
+                    surveyDO.SurveyId = survey.SurveyId;
+                    surveyDO.Name = survey.Name;
+                    surveyDO.CreationDate = survey.CreationDate;
+                    surveyDO.Email = (from u in RKEntities.Users
+                                      where u.UserId.Equals(survey.UserId)
+                                      select u.EmailAddress).FirstOrDefault();
+
+                    int numberOfQuestions = survey.Answers.Count();
+
+                    for (int i = 0; i < numberOfQuestions; i++)
+                    {
+                        AnswerDO answerDO = new AnswerDO();
+                        Answer answerdb = survey.Answers.ElementAt(i);
+                        answerDO.Response = answerdb.Response;
+                        answerDO.QuestionId = answerdb.QuestionId;
+                        surveyDO.Answers.Add(answerDO);
+                    }
+                    surveyDOs.Add(surveyDO);
+                }
+            }
+            return surveyDOs;
+        }
+
         //INFO: Return survey with given Id
         public SurveyDO GetSurvey(int id)
         {
@@ -39,7 +84,7 @@ namespace RiverKeeperDAL
                     Answer answerdb = survey.Answers.ElementAt(i);
                     answerDO.Response = answerdb.Response;
                     answerDO.QuestionId = answerdb.QuestionId;
-                    survey.Answers.Add(answerdb);
+                    surveyDO.Answers.Add(answerDO);
                 }
             }
             return surveyDO;

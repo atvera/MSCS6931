@@ -58,6 +58,28 @@ namespace RiverKeeperAPI.Controllers
             
         }
 
+        // GET: api/AllSurveys
+        /// <summary>
+        /// Returns all the submitted surveys
+        /// </summary>
+        /// <returns>A JSON object list of surveys.</returns>
+        [Route("api/AllSurveys")]
+        [HttpGet]
+        public IHttpActionResult AllSurveys()
+        {
+            List<SurveyDO> survey = null;
+            try
+            {
+                survey = surveyTask.GetSurveys();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+            return Json(survey);
+        }
+
         /*
         // GET api/Survey/Template
         /// <summary>

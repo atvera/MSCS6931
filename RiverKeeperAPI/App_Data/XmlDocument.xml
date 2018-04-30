@@ -510,6 +510,13 @@
             Returns the survey with the given id
             </summary>
             <returns>A JSON object with the stored survey.</returns>
+
+        <member name="M:RiverKeeperAPI.Controllers.SurveyController.AllSurveys">
+            <summary>
+            Returns all the submitted surveys
+            </summary>
+            <returns>A JSON object list of surveys.</returns>
+
         </member>
         <member name="M:RiverKeeperAPI.Controllers.SurveyController.Post(RiverKeeperDO.SurveyDO)">
             <summary>
