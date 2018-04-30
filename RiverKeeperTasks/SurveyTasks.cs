@@ -26,5 +26,10 @@ namespace RiverKeeperTasks
         {
             return surveyDAO.SubmitSurvey(survey);
         }
+
+        public List<Dictionary<string, string>> GetSurveyResponse(int id)
+        {
+           return surveyDAO.GetSurveyResponse(id);
+        }
     }
 }
