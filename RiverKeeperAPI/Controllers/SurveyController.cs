@@ -37,7 +37,7 @@ namespace RiverKeeperAPI.Controllers
         }
         // GET: api/SurveyResponse/{id}
         /// <summary>
-        /// Returns the survey with the given id
+        /// Returns all responses to the survey with the specified id.
         /// </summary>
         /// <returns>A JSON object with the stored survey.</returns>
         [HttpGet]
