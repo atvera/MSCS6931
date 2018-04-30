@@ -106,5 +106,76 @@ namespace RiverKeeperDAL
                 return true;
             }
         }
+
+        public List<Dictionary<string, string>> GetSurveyResponse(int surveyID)
+        {
+
+            List<Dictionary<string, string>> allAnswers = new List<Dictionary<string, string>>();
+
+            using (riverkeeperEntities RKEntities = new riverkeeperEntities())
+            {
+                //get all questions for the survey
+                List<Question> questions = (from q in RKEntities.Questions
+                                            where q.SurveyId == surveyID
+                                            select q).ToList();
+
+                List<int> uniqueSurveyIds = (from s in RKEntities.Answers
+                                             select (int)s.Survey.SurveyId).Distinct().OrderBy(surveyid=>surveyid).ToList();
+                if (questions == null || questions.Count == 0)
+                {
+                    allAnswers.Add(new Dictionary<string, string>()
+                    {
+                        { "error" , "Survey " + surveyID.ToString() + " doesn't have any answers" }
+                    });
+                }
+                else
+                {
+                    foreach (var id in uniqueSurveyIds)
+                    {
+                        List<Answer> answers = (from a in RKEntities.Answers
+                                                where a.Survey.SurveyId == id
+                                                select a).ToList();
+                        Dictionary<string, string> curAnswer = new Dictionary<string, string>();
+
+                        //set up survey general data. ie. ID, completed by, creation date
+                        curAnswer["SurveyID"] = id.ToString();
+                        curAnswer["CreatedBy"] = (from x in RKEntities.Users
+                                                  join surv in RKEntities.Surveys on x.UserId equals surv.UserId
+                                                  where surv.SurveyId == id
+                                                  select x.EmailAddress).FirstOrDefault();
+
+                        curAnswer["CreatedOn"] = (from su in RKEntities.Surveys
+                                                  where su.SurveyId == id
+                                                  select su.CreationDate).FirstOrDefault().ToString();
+
+                        foreach (var item in questions)
+                        {
+                            //add each question to the dictionary
+                            foreach (var ans in answers)
+                            {
+                                //if there is an answer, provide it
+                                if (ans.QuestionId == item.QuestionId)
+                                {
+                                    curAnswer[item.Wording] = ans.Response;
+                                }
+                                //otherwise leave it blank.
+                                else
+                                {
+                                    if (!curAnswer.ContainsKey(item.Wording))
+                                    {
+                                        curAnswer[item.Wording] = "";
+                                    }
+
+                                }
+
+                            }
+                        }
+                        allAnswers.Add(curAnswer);
+
+                    }
+                }
+            }
+            return allAnswers;
+        }
     }
 }
