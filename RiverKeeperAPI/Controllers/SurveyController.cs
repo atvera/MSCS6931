@@ -35,6 +35,28 @@ namespace RiverKeeperAPI.Controllers
 
             return Json(survey);
         }
+        // GET: api/SurveyResponse/{id}
+        /// <summary>
+        /// Returns all responses to the survey with the specified id.
+        /// </summary>
+        /// <returns>A JSON object with the stored survey.</returns>
+        [HttpGet]
+        [Route("api/SurveyResponse/{id}")]
+        public IHttpActionResult GetSurveyResponse(int id)
+        {
+            List<Dictionary<string,string>> surveyResponse = new List<Dictionary<string, string>>();
+            try
+            {
+               surveyResponse = surveyTask.GetSurveyResponse(id);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+            return Json(surveyResponse);
+            
+        }
 
         // GET: api/AllSurveys
         /// <summary>
