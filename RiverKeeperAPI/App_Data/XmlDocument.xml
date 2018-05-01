@@ -507,7 +507,7 @@
         </member>
         <member name="M:RiverKeeperAPI.Controllers.SurveyController.GetSurveyResponse(System.Int32)">
             <summary>
-            Returns the survey with the given id
+            Returns all responses to the survey with the specified id.
             </summary>
             <returns>A JSON object with the stored survey.</returns>
         </member>
