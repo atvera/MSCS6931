@@ -28,11 +28,7 @@ namespace RiverKeeperDAL
                 }
 
                 foreach (var survey in surveys)
-                {
-                    string email = (from u in RKEntities.Users
-                                    where u.UserId.Equals(survey.UserId)
-                                    select u.EmailAddress).FirstOrDefault();
-
+                { 
                     SurveyDO surveyDO = new SurveyDO();
                     surveyDO.SurveyId = survey.SurveyId;
                     surveyDO.Name = survey.Name;
