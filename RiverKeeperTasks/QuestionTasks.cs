@@ -16,6 +16,17 @@ namespace RiverKeeperTasks
     {
         public List<QuestionDO> Questions { get; set; }
     }
+
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// Business Logic Layer for Questions
+    /// 
+    ///</summary>
     public class QuestionTasks
     {
         QuestionDAO questionDAO = new QuestionDAO();
@@ -49,7 +60,7 @@ namespace RiverKeeperTasks
                 result = CreateQuestion(question);
             }
 
-            return result; //TODO: Change return value. we could be returning true even if we had issues adding a single question
+            return result; 
         }
 
     }

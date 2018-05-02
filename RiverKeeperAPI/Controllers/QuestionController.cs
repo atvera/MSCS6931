@@ -9,6 +9,17 @@ using RiverKeeperTasks;
 
 namespace RiverKeeperAPI.Controllers
 {
+
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// API Controller class for Question
+    /// 
+    ///</summary>
     [Authorize]
     public class QuestionController : ApiController
     {
@@ -26,14 +37,6 @@ namespace RiverKeeperAPI.Controllers
 
             List<QuestionDO> questions = null;
             questions = questionTask.GetQuestions(id);
-            //try
-            //{
-            //    questions = questionTask.GetQuestions(id);
-            //}
-            //catch (Exception e)
-            //{
-            //    throw new Exception(e.Message);
-            //}
 
             return Json(questions);
         }

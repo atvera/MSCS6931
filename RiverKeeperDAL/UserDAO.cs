@@ -9,6 +9,16 @@ using RiverKeeperDO;
 
 namespace RiverKeeperDAL
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// User data access layer object
+    /// 
+    ///</summary>
     public class UserDAO
     {
         //INFO: Get user by email address
@@ -62,6 +72,7 @@ namespace RiverKeeperDAL
             return UserDOs;
         }
 
+        //INFO: Creates new user
         public bool CreateUser(UserDO userDO)
         {
             using (riverkeeperEntities RKEntities = new riverkeeperEntities())

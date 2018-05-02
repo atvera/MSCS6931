@@ -10,6 +10,16 @@ using System.Web.Script.Serialization;
 
 namespace RiverKeeperAPI.Controllers
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// API Controller class for Survey
+    /// 
+    ///</summary>
     [Authorize]
     public class SurveyController : ApiController
     {
@@ -80,16 +90,6 @@ namespace RiverKeeperAPI.Controllers
             return Json(survey);
         }
 
-        /*
-        // GET api/Survey/Template
-        /// <summary>
-        /// Returns the template survey
-        /// </summary>
-        /// <returns>A JSON object with the template survey.</returns>
-        [Route("api/Survey/Template")]
-        [HttpGet] 
-        public IHttpActionResult GetTemplate()*/
-
 
         // POST: api/Survey
         /// <summary>
@@ -102,6 +102,7 @@ namespace RiverKeeperAPI.Controllers
             return surveyTask.SubmitSurvey(survey);
         }
 
+        //Future implementation 
         //// PUT: api/Survey/5
         //public void Put(int id, [FromBody]string value)
         //{

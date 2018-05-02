@@ -10,8 +10,19 @@ using RiverKeeperDO;
 
 namespace RiverKeeperDAL
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// Survey data access layer object
+    /// 
+    ///</summary>
     public class SurveyDAO
     {
+        //INFO: Gets list of all submitted surveys organized by creation date
         public List<SurveyDO> GetSurveys()
         {
             List<SurveyDO> surveyDOs = new List<SurveyDO>();
@@ -53,7 +64,7 @@ namespace RiverKeeperDAL
             return surveyDOs;
         }
 
-        //INFO: Return survey with given Id
+        //INFO: Returns survey with given Id
         public SurveyDO GetSurvey(int id)
         {
             SurveyDO surveyDO = new SurveyDO();
@@ -148,6 +159,7 @@ namespace RiverKeeperDAL
             }
         }
 
+        //INFO: Gets a list of all answers for a given survey
         public List<Dictionary<string, string>> GetSurveyResponse(int surveyID)
         {
 

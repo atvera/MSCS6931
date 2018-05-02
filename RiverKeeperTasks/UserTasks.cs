@@ -9,6 +9,16 @@ using RiverKeeperDAL;
 
 namespace RiverKeeperTasks
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// Business Logic Layer for Users
+    /// 
+    ///</summary>
     public class UserTasks
     {
         UserDAO userDAO = new UserDAO();

@@ -9,6 +9,16 @@ using RiverKeeperDO;
 
 namespace RiverKeeperDAL
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// Question data access layer object
+    /// 
+    ///</summary>
     public class QuestionDAO
     {
         //INFO: Return all questions in the database.
@@ -44,6 +54,7 @@ namespace RiverKeeperDAL
             return questionDOs;
         }
 
+        //INFO: Retrieves the question with the given id
         public QuestionDO GetQuestionById(int id)
         {
             QuestionDO questionDO = new QuestionDO();

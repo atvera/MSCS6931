@@ -12,6 +12,16 @@ using System.Web.Http.Cors;
 
 namespace RiverKeeperAPI.Controllers
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// API Controller class for User
+    /// 
+    ///</summary>
     [EnableCors(origins: "https://localhost:44370", headers: "*", methods: "*")]
     [Authorize]
     public class UserController : ApiController
@@ -64,6 +74,7 @@ namespace RiverKeeperAPI.Controllers
             return userTask.CreateUser(user);
         }
 
+        //Future implementation
         //// PUT: api/User/5
         //public void Put(int id, [FromBody]string value)
         //{

@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace RiverKeeperDO
 {
+    ///<summary>
+    /// Marquette University
+    /// MSCS 6931 701-702 Service-Oriented Architecture
+    /// Spring 2018 
+    /// 
+    /// May 1st, 2018
+    ///     
+    /// Question domain specific object
+    /// 
+    ///</summary>
     public class QuestionDO
     {
         public int QuestionId { get; set; }
